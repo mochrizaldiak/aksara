@@ -1,0 +1,158 @@
+{
+  "books": [
+    {
+      "title": "Nanti Kita Cerita Tentang Hari Ini",
+      "author": "Marchella FP",
+      "imagePath": "assets/book_cover.jpg",
+      "description": "Kumpulan kisah reflektif dan emosional tentang kehidupan dan keluarga.",
+      "publisher": "POP - Gramedia",
+      "language": "Indonesia",
+      "releaseDate": "2018-12-01",
+      "stock": 10,
+      "origin": "local"
+    },
+    {
+      "title": "Negeri Para Bedebah",
+      "author": "Tere Liye",
+      "imagePath": "assets/npb.avif",
+      "description": "Kisah konspirasi ekonomi dan politik yang menegangkan di Indonesia.",
+      "publisher": "Republika Penerbit",
+      "language": "Indonesia",
+      "releaseDate": "2012-04-21",
+      "stock": 5,
+      "origin": "local"
+    },
+    {
+      "title": "Laskar Pelangi",
+      "author": "Andrea Hirata",
+      "imagePath": "assets/lp.avif",
+      "description": "Petualangan anak-anak Belitung yang penuh harapan dan perjuangan.",
+      "publisher": "Bentang Pustaka",
+      "language": "Indonesia",
+      "releaseDate": "2005-09-01",
+      "stock": 12,
+      "origin": "local"
+    },
+    {
+      "title": "Bumi",
+      "author": "Tere Liye",
+      "imagePath": "assets/bumi.avif",
+      "description": "Awal dari petualangan remaja dengan kekuatan luar biasa di dunia paralel.",
+      "publisher": "Gramedia Pustaka Utama",
+      "language": "Indonesia",
+      "releaseDate": "2014-02-20",
+      "stock": 7,
+      "origin": "local"
+    },
+    {
+      "title": "Filosofi Teras",
+      "author": "Henry Manampiring",
+      "imagePath": "assets/ft.avif",
+      "description": "Mengenalkan stoisisme, filosofi kuno agar hidup lebih tenang dan terarah.",
+      "publisher": "Kompas Gramedia",
+      "language": "Indonesia",
+      "releaseDate": "2018-11-10",
+      "stock": 9,
+      "origin": "local"
+    },
+    {
+      "title": "Perahu Kertas",
+      "author": "Dewi Lestari",
+      "imagePath": "assets/pk.avif",
+      "description": "Kisah cinta dua insan kreatif dalam mencari jati diri dan impian.",
+      "publisher": "Bentang Pustaka",
+      "language": "Indonesia",
+      "releaseDate": "2009-08-15",
+      "stock": 6,
+      "origin": "local"
+    },
+    {
+      "title": "Saman",
+      "author": "Ayu Utami",
+      "imagePath": "assets/saman.avif",
+      "description": "Novel kontroversial yang mengangkat isu seksualitas dan sosial-politik.",
+      "publisher": "Kepustakaan Populer Gramedia",
+      "language": "Indonesia",
+      "releaseDate": "1998-05-01",
+      "stock": 4,
+      "origin": "local"
+    },
+    {
+      "title": "Ayat-Ayat Cinta",
+      "author": "Habiburrahman El Shirazy",
+      "imagePath": "assets/aac.jpeg",
+      "description": "Kisah cinta segitiga sarat nilai Islam di tengah kehidupan mahasiswa Mesir.",
+      "publisher": "Republika Penerbit",
+      "language": "Indonesia",
+      "releaseDate": "2004-06-10",
+      "stock": 11,
+      "origin": "local"
+    },
+    {
+      "title": "Pulang",
+      "author": "Tere Liye",
+      "imagePath": "assets/pulang.avif",
+      "description": "Perjalanan seorang pembunuh bayaran yang mencari arti pulang sebenarnya.",
+      "publisher": "Gramedia Pustaka Utama",
+      "language": "Indonesia",
+      "releaseDate": "2015-09-20",
+      "stock": 8,
+      "origin": "local"
+    },
+    {
+    "title": "To Kill a Mockingbird",
+    "author": "Harper Lee",
+    "imagePath": "assets/tkm.jpg",
+    "description": "A powerful novel about racial injustice and moral growth in the American South.",
+    "publisher": "J.B. Lippincott & Co.",
+    "language": "English",
+    "releaseDate": "1960-07-11",
+    "stock": 6,
+    "origin": "international"
+    },
+    {
+    "title": "1984",
+    "author": "George Orwell",
+    "imagePath": "assets/1984.jpg",
+    "description": "A dystopian novel that explores the dangers of totalitarianism and surveillance.",
+    "publisher": "Secker & Warburg",
+    "language": "English",
+    "releaseDate": "1949-06-08",
+    "stock": 7,
+    "origin": "international"
+    },
+    {
+      "title": "Selamat Tinggal",
+      "author": "Tere Liye",
+      "imagePath": "assets/st.avif",
+      "description": "Kritik terhadap dunia penerbitan dan perjuangan idealisme penulis muda.",
+      "publisher": "Gramedia Pustaka Utama",
+      "language": "Indonesia",
+      "releaseDate": "2020-03-10",
+      "stock": 6,
+      "origin": "local"
+    },
+    {
+      "title": "Jalan Pulang",
+      "author": "Hana Pertiwi",
+      "imagePath": "assets/jmp.jpg",
+      "description": "Perjalanan pulang yang penuh makna dan pertumbuhan pribadi.",
+      "publisher": "Pastel Books",
+      "language": "Indonesia",
+      "releaseDate": "2022-08-18",
+      "stock": 5,
+      "origin": "local"
+    },
+    {
+      "title": "Sabtu Bersama Bapak",
+      "author": "Adhitya Mulya",
+      "imagePath": "assets/sbb.jpg",
+      "description": "Kisah keluarga yang hidup dengan pesan video dari ayah yang telah tiada.",
+      "publisher": "GagasMedia",
+      "language": "Indonesia",
+      "releaseDate": "2014-06-17",
+      "stock": 7,
+      "origin": "local"
+    }
+  ]
+}
