@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/intl.dart';
 import '../components/order_card.dart';
+import '../providers/order_provider.dart';
+import '../providers/user_provider.dart';
+import '../models/order_item.dart'; // OrderItem model baru, bukan Book lagi
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends ConsumerWidget {
   const OrderScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUser = ref.watch(userProvider);
+    final allOrders = ref.watch(orderProvider);
+
+    final now = DateTime.now();
+    final pickupTime = DateFormat(
+      'dd/MM/yyyy – HH:mm',
+    ).format(now.add(const Duration(hours: 3)));
+    final returnTime = DateFormat(
+      'dd/MM/yyyy – HH:mm',
+    ).format(now.add(const Duration(days: 5)));
+
+    // Filter orders sesuai email user yang login
+    final userOrders =
+        allOrders
+            .where((order) => order.userEmail == currentUser?.email)
+            .toList()
+            .reversed
+            .toList();
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
       body: SafeArea(
@@ -42,15 +66,30 @@ class OrderScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
-              // Contoh OrderCard
-              const OrderCard(
-                imagePath: 'assets/book_cover.jpg',
-                author: 'Marchella FP',
-                title: 'Nanti Kita Cerita Tentang Hari Ini',
-                status: 'Sedang Berlangsung',
-                pickupTime: '12/05/2025 – 15:00 WIB',
-                returnTime: '19/05/2025 – 15:00 WIB',
-              ),
+              if (userOrders.isEmpty)
+                const Center(
+                  child: Text(
+                    "Belum ada pesanan",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                )
+              else
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: userOrders.length,
+                    itemBuilder: (context, index) {
+                      final order = userOrders[index];
+                      return OrderCard(
+                        imagePath: order.book.imagePath,
+                        author: order.book.author,
+                        title: order.book.title,
+                        status: 'Sedang Berlangsung',
+                        pickupTime: pickupTime,
+                        returnTime: returnTime,
+                      );
+                    },
+                  ),
+                ),
             ],
           ),
         ),

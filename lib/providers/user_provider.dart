@@ -1,11 +1,17 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/user.dart';
 
-class UserNotifier extends StateNotifier<User?> {
+class UserData {
+  final String name;
+  final String email;
+
+  UserData({required this.name, required this.email});
+}
+
+class UserNotifier extends StateNotifier<UserData?> {
   UserNotifier() : super(null);
 
   void setUser(String name, String email) {
-    state = User(name: name, email: email);
+    state = UserData(name: name, email: email);
   }
 
   void clearUser() {
@@ -13,6 +19,6 @@ class UserNotifier extends StateNotifier<User?> {
   }
 }
 
-final userProvider = StateNotifierProvider<UserNotifier, User?>((ref) {
-  return UserNotifier();
-});
+final userProvider = StateNotifierProvider<UserNotifier, UserData?>(
+  (ref) => UserNotifier(),
+);

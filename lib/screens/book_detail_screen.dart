@@ -1,13 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/book.dart';
+import '../providers/order_provider.dart';
+import '../components/custom_modal.dart';
+import '../providers/user_provider.dart';
 
-class BookDetailScreen extends StatelessWidget {
+class BookDetailScreen extends ConsumerWidget {
   final Book book;
 
   const BookDetailScreen({super.key, required this.book});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    void showBookingModal() {
+      showDialog(
+        context: context,
+        builder:
+            (_) => CustomModal(
+              title: 'Booking',
+              description: 'Apakah Anda yakin ingin meminjam buku ini?',
+              onCancel: () => Navigator.pop(context),
+              onConfirm: () {
+                Navigator.pop(context); // Tutup modal pertama
+
+                final user = ref.read(userProvider);
+                if (user != null) {
+                  ref.read(orderProvider.notifier).addOrder(book, user.email);
+                }
+
+                showDialog(
+                  context: context,
+                  builder:
+                      (_) => CustomModal(
+                        title: 'Booked',
+                        description:
+                            'Setelah melakukan pemesanan, Anda dapat mengambil buku di perpustakaan fisik dalam waktu 1 jam sesuai jam operasional perpustakaan. Pemberitahuan akan dikirimkan jika buku tidak diambil dalam batas waktu tersebut.',
+                        onCancel: () => Navigator.pop(context),
+                        onConfirm: () {
+                          Navigator.pop(context); // Tutup modal
+                          Navigator.pushReplacementNamed(context, '/order');
+                        },
+                        confirmText: 'Tutup',
+                        singleButton: true,
+                      ),
+                );
+              },
+            ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: const Color(0xFFF5F7FA),
       body: SafeArea(
@@ -47,7 +88,6 @@ class BookDetailScreen extends StatelessWidget {
                   horizontal: 16,
                   vertical: 8,
                 ),
-                decoration: const BoxDecoration(color: Color(0xFFF5F7FA)),
                 child: ListView(
                   children: [
                     Text(
@@ -190,9 +230,7 @@ class BookDetailScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24),
                         ),
                       ),
-                      onPressed: () {
-                        // TODO: Booking logic
-                      },
+                      onPressed: showBookingModal,
                       child: const Text(
                         'Booking',
                         style: TextStyle(
