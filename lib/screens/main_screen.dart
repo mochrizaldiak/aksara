@@ -5,8 +5,9 @@ import 'book_list_screen.dart';
 
 class MainScreen extends StatefulWidget {
   final int initialIndex;
+  final Map<String, dynamic>? arguments;
 
-  const MainScreen({super.key, this.initialIndex = 0});
+  const MainScreen({super.key, this.initialIndex = 0, this.arguments});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -15,14 +16,12 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   late PageController _pageController;
   late int _currentIndex;
-  late final List<Widget> _pages;
 
   @override
   void initState() {
     super.initState();
     _currentIndex = widget.initialIndex;
     _pageController = PageController(initialPage: _currentIndex);
-    _pages = const [HomeScreen(), BookListScreen(), ProfileScreen()];
   }
 
   @override
@@ -43,6 +42,17 @@ class _MainScreenState extends State<MainScreen> {
       duration: const Duration(milliseconds: 300),
       curve: Curves.easeInOut,
     );
+  }
+
+  List<Widget> get _pages {
+    return [
+      const HomeScreen(),
+      BookListScreen(
+        initialSearch: widget.arguments?['search'],
+        initialFilter: widget.arguments?['filter'],
+      ),
+      const ProfileScreen(),
+    ];
   }
 
   @override

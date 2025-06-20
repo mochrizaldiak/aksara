@@ -21,7 +21,7 @@ class BookDetailScreen extends ConsumerWidget {
               description: 'Apakah Anda yakin ingin meminjam buku ini?',
               onCancel: () => Navigator.pop(context),
               onConfirm: () {
-                Navigator.pop(context); // Tutup modal pertama
+                Navigator.pop(context);
 
                 final user = ref.read(userProvider);
                 if (user != null) {
@@ -37,7 +37,7 @@ class BookDetailScreen extends ConsumerWidget {
                             'Setelah melakukan pemesanan, Anda dapat mengambil buku di perpustakaan fisik dalam waktu 1 jam sesuai jam operasional perpustakaan. Pemberitahuan akan dikirimkan jika buku tidak diambil dalam batas waktu tersebut.',
                         onCancel: () => Navigator.pop(context),
                         onConfirm: () {
-                          Navigator.pop(context); // Tutup modal
+                          Navigator.pop(context);
                           Navigator.pushReplacementNamed(context, '/order');
                         },
                         confirmText: 'Tutup',

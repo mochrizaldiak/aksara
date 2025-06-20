@@ -17,12 +17,20 @@ class _BookListScreenState extends ConsumerState<BookListScreen> {
   late String searchQuery;
   String? sortOption;
   late String? filterOption;
+  late TextEditingController _controller;
 
   @override
   void initState() {
     super.initState();
     searchQuery = widget.initialSearch ?? '';
     filterOption = widget.initialFilter ?? 'all';
+    _controller = TextEditingController(text: searchQuery);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -57,7 +65,6 @@ class _BookListScreenState extends ConsumerState<BookListScreen> {
                     book.author.toLowerCase().contains(
                       searchQuery.toLowerCase(),
                     );
-
                 final matchesFilter =
                     filterOption == 'all' || book.origin == filterOption;
                 return matchesQuery && matchesFilter;
@@ -74,8 +81,11 @@ class _BookListScreenState extends ConsumerState<BookListScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Search bar
                 TextField(
+                  controller: _controller,
+                  onChanged: (value) {
+                    setState(() => searchQuery = value);
+                  },
                   decoration: InputDecoration(
                     hintText: 'Search',
                     hintStyle: const TextStyle(color: Colors.grey),
@@ -90,14 +100,8 @@ class _BookListScreenState extends ConsumerState<BookListScreen> {
                       borderSide: BorderSide.none,
                     ),
                   ),
-                  controller: TextEditingController(text: searchQuery),
-                  onChanged: (value) {
-                    setState(() => searchQuery = value);
-                  },
                 ),
                 const SizedBox(height: 12),
-
-                // Sort & Filter dropdown
                 Row(
                   children: [
                     Expanded(
@@ -168,8 +172,6 @@ class _BookListScreenState extends ConsumerState<BookListScreen> {
                   ],
                 ),
                 const SizedBox(height: 16),
-
-                // Book Grid
                 Expanded(
                   child: GridView.builder(
                     itemCount: filteredBooks.length,

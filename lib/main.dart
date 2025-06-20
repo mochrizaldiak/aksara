@@ -44,7 +44,10 @@ class MyApp extends StatelessWidget {
             page = const MainScreen(initialIndex: 0);
             break;
           case '/list':
-            page = const MainScreen(initialIndex: 1);
+            page = MainScreen(
+              initialIndex: 1,
+              arguments: settings.arguments as Map<String, dynamic>?,
+            );
             break;
           case '/profile':
             page = const MainScreen(initialIndex: 2);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../components/custom_modal.dart';
-import '../providers/user_provider.dart'; // pastikan path sesuai
+import '../providers/user_provider.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -14,12 +14,12 @@ class ProfileScreen extends ConsumerWidget {
             title: 'Keluar',
             description: 'Apakah Anda yakin ingin keluar?',
             onConfirm: () {
-              ref.read(userProvider.notifier).clearUser(); // clear user
-              Navigator.of(context).pop(); // tutup dialog
-              Navigator.of(context).pushReplacementNamed('/'); // ke login
+              ref.read(userProvider.notifier).clearUser();
+              Navigator.of(context).pop();
+              Navigator.of(context).pushReplacementNamed('/');
             },
             onCancel: () {
-              Navigator.of(context).pop(); // tutup dialog saja
+              Navigator.of(context).pop();
             },
           ),
     );
